@@ -2671,12 +2671,6 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-type-alias">
-			<a href="globals.html#filehandler" class="tsd-kind-icon">File<wbr>Handler</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
-			<a href="globals.html#fileshandler" class="tsd-kind-icon">Files<wbr>Handler</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
 			<a href="globals.html#selectfile" class="tsd-kind-icon">Select<wbr>File</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
@@ -2719,6 +2713,11 @@ img {
 			<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 			<ul>
 				<li><a href="#description">Description</a></li>
+				<li><a href="#examples">Examples</a><ul>
+						<li><a href="#submit-a-file-to-the-server">Submit a file to the server</a></li>
+						<li><a href="#show-a-file-preview">Show a file preview</a></li>
+					</ul>
+				</li>
 				<li><a href="#usage">Usage</a><ul>
 						<li><a href="#selectfile">selectFile</a></li>
 						<li><a href="#selectfiles">selectFiles</a></li>
@@ -2732,20 +2731,21 @@ img {
 				<h2>Description</h2>
 			</a>
 			<p>This package provides several helpers to deal with file inputs.</p>
-			<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-				<h2>Usage</h2>
+			<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+				<h2>Examples</h2>
 			</a>
-			<a href="#selectfile" id="selectfile" style="color: inherit; text-decoration: none;">
-				<h3>selectFile</h3>
+			<a href="#submit-a-file-to-the-server" id="submit-a-file-to-the-server" style="color: inherit; text-decoration: none;">
+				<h3>Submit a file to the server</h3>
 			</a>
-			<p>Example of an imperative approach to let the user pick a file without having to deal with any input fields, and submit it iimmediately to the server.</p>
+			<p>Submit a file immediately after selecting one.</p>
 			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFile</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
 <span style="color: #0000FF">import</span><span style="color: #000000"> </span><span style="color: #001080">axios</span><span style="color: #000000"> </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"axios"</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFile</span><span style="color: #000000"> = (</span><span style="color: #001080">file</span><span style="color: #000000">?: </span><span style="color: #267F99">File</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFile</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFile</span><span style="color: #000000">()</span>
+
 <span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">file</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
 
-<span style="color: #000000">  </span><span style="color: #795E26">showPreview</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">)</span>
 <span style="color: #000000">  </span><span style="color: #795E26">submitFile</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">) </span>
 <span style="color: #000000">}</span>
 
@@ -2759,27 +2759,16 @@ img {
 <span style="color: #000000">}</span>
 
 
-<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #000000FF">() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #795E26">selectFile</span><span style="color: #000000FF">(</span><span style="color: #001080">handleSelectFile</span><span style="color: #000000FF">)</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
-			<a href="#selectfiles" id="selectfiles" style="color: inherit; text-decoration: none;">
-				<h3>selectFiles</h3>
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFile</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+			<a href="#show-a-file-preview" id="show-a-file-preview" style="color: inherit; text-decoration: none;">
+				<h3>Show a file preview</h3>
 			</a>
-			<p>Similar to <code>selectFile</code>, but allows user to select multiple files.</p>
-			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFiles</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFiles</span><span style="color: #000000"> = (</span><span style="color: #001080">files</span><span style="color: #000000">?: </span><span style="color: #267F99">File</span><span style="color: #000000">[]) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">files</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
-
-<span style="color: #000000">  </span><span style="color: #008000">// do something with the files...</span>
-<span style="color: #000000">}</span>
-
-<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #000000FF">() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #795E26">selectFiles</span><span style="color: #000000FF">(</span><span style="color: #001080">handleSelectFiles</span><span style="color: #000000FF">)</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
-			<a href="#selectfileoftype" id="selectfileoftype" style="color: inherit; text-decoration: none;">
-				<h3>selectFileOfType</h3>
-			</a>
-			<p>Allow only specific types of files, used inputs <code>accept</code> property behind the scenes, see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept">here</a>. In this example we will display an image preview immediately.</p>
+			<p>Show a file preview immediately after selection.</p>
 			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFileOfType</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFileOfType</span><span style="color: #000000"> = (</span><span style="color: #001080">file</span><span style="color: #000000">?: </span><span style="color: #267F99">File</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFileOfType</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFileOfType</span><span style="color: #000000">(</span><span style="color: #A31515">'image/*'</span><span style="color: #000000">)</span>
+
 <span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">file</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
 
 <span style="color: #000000">  </span><span style="color: #795E26">showPreview</span><span style="color: #000000">(</span><span style="color: #001080">file</span><span style="color: #000000">)</span>
@@ -2791,20 +2780,71 @@ img {
 <span style="color: #000000">  </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">.</span><span style="color: #795E26">appendChild</span><span style="color: #000000">(</span><span style="color: #001080">img</span><span style="color: #000000">)</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #000000FF">() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #795E26">selectFileOfType</span><span style="color: #000000FF">(</span><span style="color: #A31515">'image/*'</span><span style="color: #000000FF">, </span><span style="color: #001080">handleSelectFileOfType</span><span style="color: #000000FF">)</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFileOfType</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+			<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+				<h2>Usage</h2>
+			</a>
+			<a href="#selectfile" id="selectfile" style="color: inherit; text-decoration: none;">
+				<h3>selectFile</h3>
+			</a>
+			<p>Let the user select a single file.</p>
+			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFile</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
+<span style="color: #0000FF">import</span><span style="color: #000000"> </span><span style="color: #001080">axios</span><span style="color: #000000"> </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"axios"</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFile</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFile</span><span style="color: #000000">()</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">file</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
+
+<span style="color: #000000">  </span><span style="color: #008000">// do something with the file...</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFile</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+			<a href="#selectfiles" id="selectfiles" style="color: inherit; text-decoration: none;">
+				<h3>selectFiles</h3>
+			</a>
+			<p>Similar to <code>selectFile</code>, but allows user to select multiple files.</p>
+			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFiles</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFiles</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">files</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFiles</span><span style="color: #000000">()</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">files</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
+
+<span style="color: #000000">  </span><span style="color: #008000">// do something with the files...</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFiles</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+			<a href="#selectfileoftype" id="selectfileoftype" style="color: inherit; text-decoration: none;">
+				<h3>selectFileOfType</h3>
+			</a>
+			<p>Allow only specific types of files, used inputs <code>accept</code> property behind the scenes, see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept">here</a>.</p>
+			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFileOfType</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFileOfType</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">file</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFileOfType</span><span style="color: #000000">(</span><span style="color: #A31515">'image/*'</span><span style="color: #000000">)</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">file</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
+
+<span style="color: #000000">  </span><span style="color: #008000">// do something with the file...</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFileOfType</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
 			<a href="#selectfilesoftype" id="selectfilesoftype" style="color: inherit; text-decoration: none;">
 				<h3>selectFilesOfType</h3>
 			</a>
 			<p>Similar to <code>selectFileOfType</code>, but allows user to select multiple files.</p>
 			<pre><code class="language-tsx"><pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectFilesOfType</span><span style="color: #000000"> } </span><span style="color: #0000FF">from</span><span style="color: #000000"> </span><span style="color: #A31515">"@bytesoftio/helpers-input"</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFilesOfType</span><span style="color: #000000"> = (</span><span style="color: #001080">files</span><span style="color: #000000">?: </span><span style="color: #267F99">File</span><span style="color: #000000">[]) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">handleSelectFilesOfType</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">files</span><span style="color: #000000"> = </span><span style="color: #0000FF">await</span><span style="color: #000000"> </span><span style="color: #795E26">selectFilesOfType</span><span style="color: #000000">(</span><span style="color: #A31515">'image/*'</span><span style="color: #000000">)</span>
+
 <span style="color: #000000">  </span><span style="color: #0000FF">if</span><span style="color: #000000"> ( ! </span><span style="color: #001080">files</span><span style="color: #000000">) </span><span style="color: #0000FF">return</span>
 
 <span style="color: #000000">  </span><span style="color: #008000">// do something with the files...</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #000000FF">() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> </span><span style="color: #795E26">selectFilesOfType</span><span style="color: #000000FF">(</span><span style="color: #A31515">'image/*'</span><span style="color: #000000FF">, </span><span style="color: #001080">handleSelectFilesOfType</span><span style="color: #000000FF">)</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
+<span style="color: #800000">&lt;button</span><span style="color: #000000"> </span><span style="color: #FF0000">onClick</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">handleSelectFilesOfType</span><span style="color: #0000FF">}</span><span style="color: #800000">/&gt;</span></code></pre></code></pre>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
@@ -2813,8 +2853,6 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-type-alias"><a href="globals.html#filehandler" class="tsd-kind-icon">File<wbr>Handler</a></li>
-							<li class="tsd-kind-type-alias"><a href="globals.html#fileshandler" class="tsd-kind-icon">Files<wbr>Handler</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#selectfile" class="tsd-kind-icon">Select<wbr>File</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#selectfileoftype" class="tsd-kind-icon">Select<wbr>File<wbr>OfType</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#selectfiles" class="tsd-kind-icon">Select<wbr>Files</a></li>
@@ -2836,74 +2874,12 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Type aliases</h2>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
-				<a name="filehandler" class="tsd-anchor"></a>
-				<h3>File<wbr>Handler</h3>
-				<div class="tsd-signature tsd-kind-icon">File<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L1">types.ts:1</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter-signature">
-							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-							</ul>
-							<ul class="tsd-descriptions">
-								<li class="tsd-description">
-									<h4 class="tsd-parameters-title">Parameters</h4>
-									<ul class="tsd-parameters">
-										<li>
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> file: <span class="tsd-signature-type">File</span></h5>
-										</li>
-									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias">
-				<a name="fileshandler" class="tsd-anchor"></a>
-				<h3>Files<wbr>Handler</h3>
-				<div class="tsd-signature tsd-kind-icon">Files<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L2">types.ts:2</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter-signature">
-							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-							</ul>
-							<ul class="tsd-descriptions">
-								<li class="tsd-description">
-									<h4 class="tsd-parameters-title">Parameters</h4>
-									<ul class="tsd-parameters">
-										<li>
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> files: <span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span></h5>
-										</li>
-									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="selectfile" class="tsd-anchor"></a>
 				<h3>Select<wbr>File</h3>
-				<div class="tsd-signature tsd-kind-icon">Select<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<div class="tsd-signature tsd-kind-icon">Select<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L3">types.ts:3</a></li>
+						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/types.ts#L1">types.ts:1</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2911,17 +2887,11 @@ img {
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
-									<h4 class="tsd-parameters-title">Parameters</h4>
-									<ul class="tsd-parameters">
-										<li>
-											<h5>onChange: <a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a></h5>
-										</li>
-									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 						</li>
@@ -2931,10 +2901,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="selectfileoftype" class="tsd-anchor"></a>
 				<h3>Select<wbr>File<wbr>OfType</h3>
-				<div class="tsd-signature tsd-kind-icon">Select<wbr>File<wbr>OfType<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<div class="tsd-signature tsd-kind-icon">Select<wbr>File<wbr>OfType<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L4">types.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/types.ts#L2">types.ts:2</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2942,20 +2912,17 @@ img {
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
 									<h4 class="tsd-parameters-title">Parameters</h4>
 									<ul class="tsd-parameters">
 										<li>
-											<h5>accept: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
-										</li>
-										<li>
-											<h5>onChange: <a href="globals.html#filehandler" class="tsd-signature-type">FileHandler</a></h5>
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> accept: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 										</li>
 									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 						</li>
@@ -2965,10 +2932,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="selectfiles" class="tsd-anchor"></a>
 				<h3>Select<wbr>Files</h3>
-				<div class="tsd-signature tsd-kind-icon">Select<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<div class="tsd-signature tsd-kind-icon">Select<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L5">types.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/types.ts#L3">types.ts:3</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -2976,17 +2943,11 @@ img {
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
-									<h4 class="tsd-parameters-title">Parameters</h4>
-									<ul class="tsd-parameters">
-										<li>
-											<h5>onChange: <a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a></h5>
-										</li>
-									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 						</li>
@@ -2996,10 +2957,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="selectfilesoftype" class="tsd-anchor"></a>
 				<h3>Select<wbr>Files<wbr>OfType</h3>
-				<div class="tsd-signature tsd-kind-icon">Select<wbr>Files<wbr>OfType<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+				<div class="tsd-signature tsd-kind-icon">Select<wbr>Files<wbr>OfType<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/types.ts#L6">types.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/types.ts#L4">types.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -3007,20 +2968,17 @@ img {
 					<ul class="tsd-parameters">
 						<li class="tsd-parameter-signature">
 							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, onChange<span class="tsd-signature-symbol">: </span><a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></li>
 							</ul>
 							<ul class="tsd-descriptions">
 								<li class="tsd-description">
 									<h4 class="tsd-parameters-title">Parameters</h4>
 									<ul class="tsd-parameters">
 										<li>
-											<h5>accept: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
-										</li>
-										<li>
-											<h5>onChange: <a href="globals.html#fileshandler" class="tsd-signature-type">FilesHandler</a></h5>
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> accept: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 										</li>
 									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 								</li>
 							</ul>
 						</li>
@@ -3034,40 +2992,16 @@ img {
 				<a name="selectfile" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> select<wbr>File</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">select<wbr>File<span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">select<wbr>File<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/selectFile.ts#L4">selectFile.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/selectFile.ts#L4">selectFile.ts:4</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>onChange: <span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagOptional">Optional</span> file: <span class="tsd-signature-type">File</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3075,13 +3009,13 @@ img {
 				<a name="selectfileoftype" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> select<wbr>File<wbr>OfType</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">select<wbr>File<wbr>OfType<span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, onChange<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">select<wbr>File<wbr>OfType<span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/selectFileOfType.ts#L4">selectFileOfType.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/selectFileOfType.ts#L4">selectFileOfType.ts:4</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3089,29 +3023,8 @@ img {
 							<li>
 								<h5>accept: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
-							<li>
-								<h5>onChange: <span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagOptional">Optional</span> file: <span class="tsd-signature-type">File</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3119,40 +3032,16 @@ img {
 				<a name="selectfiles" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> select<wbr>Files</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">select<wbr>Files<span class="tsd-signature-symbol">(</span>onChange<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">select<wbr>Files<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/selectFiles.ts#L4">selectFiles.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/selectFiles.ts#L4">selectFiles.ts:4</a></li>
 							</ul>
 						</aside>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>onChange: <span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagOptional">Optional</span> files: <span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -3160,13 +3049,13 @@ img {
 				<a name="selectfilesoftype" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> select<wbr>Files<wbr>OfType</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">select<wbr>Files<wbr>OfType<span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, onChange<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">select<wbr>Files<wbr>OfType<span class="tsd-signature-symbol">(</span>accept<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/a613041/src/selectFilesOfType.ts#L3">selectFilesOfType.ts:3</a></li>
+								<li>Defined in <a href="https://github.com/bytesoftio/helpers-input/blob/1349c51/src/selectFilesOfType.ts#L4">selectFilesOfType.ts:4</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3174,29 +3063,8 @@ img {
 							<li>
 								<h5>accept: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
-							<li>
-								<h5>onChange: <span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5><span class="tsd-flag ts-flagOptional">Optional</span> files: <span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">File</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>

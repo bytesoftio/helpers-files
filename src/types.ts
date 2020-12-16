@@ -1,6 +1,4 @@
-export type FileHandler = (file?: File) => void
-export type FilesHandler = (files?: File[]) => void
-export type SelectFile = (onChange: FileHandler) => void
-export type SelectFileOfType = (accept: string | undefined, onChange: FileHandler) => void
-export type SelectFiles = (onChange: FilesHandler) => void
-export type SelectFilesOfType = (accept: string | undefined, onChange: FilesHandler) => void
+export type SelectFile = () => Promise<File | undefined>
+export type SelectFileOfType = (accept?: string) => Promise<File | undefined>
+export type SelectFiles = () => Promise<File[] | undefined>
+export type SelectFilesOfType = (accept?: string) => Promise<File[] | undefined>

@@ -11,6 +11,9 @@
 
 
 - [Description](#description)
+- [Examples](#examples)
+  - [Submit a file to the server](#submit-a-file-to-the-server)
+  - [Show a file preview](#show-a-file-preview)
 - [Usage](#usage)
   - [selectFile](#selectfile)
   - [selectFiles](#selectfiles)
@@ -23,20 +26,21 @@
 
 This package provides several helpers to deal with file inputs.
 
-## Usage
+## Examples
 
-### selectFile
+### Submit a file to the server
 
-Example of an imperative approach to let the user pick a file without having to deal with any input fields, and submit it iimmediately to the server.
+Submit a file immediately after selecting one.
 
 ```tsx
 import { selectFile } from "@bytesoftio/helpers-input"
 import axios from "axios"
 
-const handleSelectFile = (file?: File) => {
+const handleSelectFile = async () => {
+  const file = await selectFile()
+  
   if ( ! file) return
 
-  showPreview(file)
   submitFile(file) 
 }
 
@@ -50,33 +54,19 @@ const submitFile = async (file: File) => {
 }
 
 
-<button onClick={() => selectFile(handleSelectFile)}/>
+<button onClick={handleSelectFile}/>
 ```
 
-### selectFiles
+### Show a file preview
 
-Similar to `selectFile`, but allows user to select multiple files.
-
-```tsx
-import { selectFiles } from "@bytesoftio/helpers-input"
-
-const handleSelectFiles = (files?: File[]) => {
-  if ( ! files) return
-
-  // do something with the files...
-}
-
-<button onClick={() => selectFiles(handleSelectFiles)}/>
-```
-
-### selectFileOfType
-
-Allow only specific types of files, used inputs `accept` property behind the scenes, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept). In this example we will display an image preview immediately.
+Show a file preview immediately after selection.
 
 ```tsx
 import { selectFileOfType } from "@bytesoftio/helpers-input"
 
-const handleSelectFileOfType = (file?: File) => {
+const handleSelectFileOfType = async () => {
+  const file = await selectFileOfType('image/*')
+
   if ( ! file) return
 
   showPreview(file)
@@ -88,7 +78,64 @@ const showPreview = (file: File) => {
   document.body.appendChild(img)
 }
 
-<button onClick={() => selectFileOfType('image/*', handleSelectFileOfType)}/>
+<button onClick={handleSelectFileOfType}/>
+```
+
+## Usage
+
+### selectFile
+
+Let the user select a single file.
+
+```tsx
+import { selectFile } from "@bytesoftio/helpers-input"
+import axios from "axios"
+
+const handleSelectFile = async () => {
+  const file = await selectFile()
+  
+  if ( ! file) return
+
+  // do something with the file...
+}
+
+<button onClick={handleSelectFile}/>
+```
+
+### selectFiles
+
+Similar to `selectFile`, but allows user to select multiple files.
+
+```tsx
+import { selectFiles } from "@bytesoftio/helpers-input"
+
+const handleSelectFiles = async () => {
+  const files = await selectFiles()
+
+  if ( ! files) return
+
+  // do something with the files...
+}
+
+<button onClick={handleSelectFiles}/>
+```
+
+### selectFileOfType
+
+Allow only specific types of files, used inputs `accept` property behind the scenes, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept).
+
+```tsx
+import { selectFileOfType } from "@bytesoftio/helpers-input"
+
+const handleSelectFileOfType = async () => {
+  const file = await selectFileOfType('image/*')
+
+  if ( ! file) return
+
+  // do something with the file...
+}
+
+<button onClick={handleSelectFileOfType}/>
 ```
 
 ### selectFilesOfType
@@ -98,11 +145,13 @@ Similar to `selectFileOfType`, but allows user to select multiple files.
 ```tsx
 import { selectFilesOfType } from "@bytesoftio/helpers-input"
 
-const handleSelectFilesOfType = (files?: File[]) => {
+const handleSelectFilesOfType = async () => {
+  const files = await selectFilesOfType('image/*')
+
   if ( ! files) return
 
   // do something with the files...
 }
 
-<button onClick={() => selectFilesOfType('image/*', handleSelectFilesOfType)}/>
+<button onClick={handleSelectFilesOfType}/>
 ```

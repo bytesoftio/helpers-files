@@ -21,7 +21,7 @@
     "release": "yarn run build && np --no-release-draft"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "@bytesoftio/helpers-promises": "^1.2.0"
   },
   "devDependencies": {
     "@bytesoftio/docster": "^1.0.0",
